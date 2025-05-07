@@ -3,7 +3,6 @@ package org.isep.cleancode.presentation;
 import com.google.gson.Gson;
 import org.isep.cleancode.Todo;
 import org.isep.cleancode.application.TodoManager;
-
 import spark.Request;
 import spark.Response;
 
@@ -28,7 +27,7 @@ public class TodoController {
             return gson.toJson(newTodo);
         } catch (Exception e) {
             res.status(400);
-            return e.getMessage();
+            return gson.toJson(e.getMessage());
         }
     }
 }
