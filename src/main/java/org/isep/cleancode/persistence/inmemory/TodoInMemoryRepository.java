@@ -1,4 +1,4 @@
-package org.isep.cleancode.persistence;
+package org.isep.cleancode.persistence.inmemory;
 
 import org.isep.cleancode.Todo;
 import org.isep.cleancode.application.ITodoRepository;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class TodoRepository implements ITodoRepository {
+public class TodoInMemoryRepository implements ITodoRepository {
     private final List<Todo> todos = new ArrayList<>();
 
     @Override
@@ -17,7 +17,7 @@ public class TodoRepository implements ITodoRepository {
 
     @Override
     public List<Todo> findAll() {
-        return todos;
+        return new ArrayList<>(todos);
     }
 
     @Override
