@@ -10,7 +10,7 @@ By the end of the lab, you’ll have a functional and well-structured API that s
 - We'll begin by building a basic working API, storing Todos in memory, without worrying about architecture.
 - Next, we’ll refactor the project into a 3-tier architecture to improve separation of concerns.
 - We'll then evolve the architecture into a more scalable and maintainable Hexagonal Architecture (also known as Ports and Adapters).
-- Using this new structure, we'll implement an alternative persistence method using CSV files.
+- Using this new structure, we'll implement an alternative org.isep.cleancode.persistence method using CSV files.
 - Finally, we’ll make the app configurable so it can switch between in-memory and CSV-based storage at startup.
 
 ## 📥 Submission
@@ -61,7 +61,7 @@ For this first step, we will simply make 2 basic endpoints, without caring much 
 
 For now, Todos will be stored "in memory", i.e. in a basic data structure of your choice, such as a list for example. Make sure this data structure is instantiated only once and shared by the 2 endpoints. The starter project already has it covered.
 
-Since they are stored in memory, Todos will be "lost" when the program shuts down. It's ok for now, we'll deal with proper persistence later.
+Since they are stored in memory, Todos will be "lost" when the program shuts down. It's ok for now, we'll deal with proper org.isep.cleancode.persistence later.
 
 Here is an example way of designing the 2 endpoints
 
@@ -95,7 +95,7 @@ For that, you will <ins>split and move yur code in 3 distinct layers</ins> :
 
 To achieve this, you may <ins>separate your code into 3 different packages</ins>. Or, even better (but you are not required to), into different independant modules.
 
-The code of the presentation layer should be calling the code of the application layer, which should be calling the code of the data persistence layer.
+The code of the presentation layer should be calling the code of the application layer, which should be calling the code of the data org.isep.cleancode.persistence layer.
 
 To keep this lab simple, the Todo class will be shared across all layers. In a more robust architecture, it’s considered good practice to define distinct models for each layer—for example, using Entities in the domain layer and DTOs (Data Transfer Objects) in the presentation layer. However, since the goal of this lab is to focus on architectural fundamentals, we’ll skip that separation for now. If you're curious, feel free to explore more about Entities, DTOs, and how separating models per layer improves decoupling and maintainability.
 
@@ -108,13 +108,13 @@ By the end of this step, your project hierarchy should look similar to this :
     - TodoController.java
 - /application
     - TodoManager.java
-- /persistence
+- /org.isep.cleancode.persistence
     - TodoRepository.java
 ```
 
 <ins>Test your API</ins> and make sure it still works !
 
-This architecture is a good start. It makes the code a bit easier to maintain. But it is still not very scalable, nor is it extensible. What if we want to add another means of persistence for our Todos ? Such as a proper database, or CSV files ? We would be forced to rewrite the TodoRepository. But what if we also want to keep the in-memory persistence implementation for testing purpose ?
+This architecture is a good start. It makes the code a bit easier to maintain. But it is still not very scalable, nor is it extensible. What if we want to add another means of org.isep.cleancode.persistence for our Todos ? Such as a proper database, or CSV files ? We would be forced to rewrite the TodoRepository. But what if we also want to keep the in-memory org.isep.cleancode.persistence implementation for testing purpose ?
 
 In the next step, we will make our project more extensible by making a more complex, but more robust architecture.
 
@@ -175,7 +175,7 @@ Here is an example for the project Hierarchy that you may have at this point :
 - /application
     - TodoManager.java
     - ITodoRepository.java
-- /persistence
+- /org.isep.cleancode.persistence
     - /inmemory
         - TodoInMemoryRepository.Java
     - /csvfiles
