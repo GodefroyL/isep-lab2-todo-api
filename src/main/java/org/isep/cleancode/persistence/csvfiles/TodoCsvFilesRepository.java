@@ -16,15 +16,9 @@ public class TodoCsvFilesRepository implements ITodoRepository {
     private final Path filePath;
 
     public TodoCsvFilesRepository() {
-        String appData = System.getenv("APPDATA");
-        if (appData == null) {
-            appData = System.getProperty("user.home"); // fallback
-        }
-        Path dir = Paths.get(appData, "todo-app");
-        this.filePath = dir.resolve("todos.csv");
+        this.filePath = Paths.get("src\\main\\java\\org\\isep\\cleancode\\persistence\\csvfiles\\todos.csv");
 
         try {
-            Files.createDirectories(dir);
             if (!Files.exists(filePath)) {
                 Files.createFile(filePath);
             }
